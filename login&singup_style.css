@@ -9,7 +9,7 @@ body {
 
 fieldset {
     background-color: rgb(238, 238, 238);
-    
+    box-shadow: 10px 25px 50px dimgray;
     display: flex;
     flex-direction: column;
     justify-content: center;
