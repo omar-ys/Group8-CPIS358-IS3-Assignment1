@@ -1,37 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
     <link rel="stylesheet" href="login&singup_style.css">
     <style>
-        .forgotPass {
-            display: flex;
-            margin-top: -15px;
-            margin-left: 100px;
-        }
+
     </style>
 </head>
 
 <body>
-        <form id="login-form" method="post">
-            <fieldset>
-                <legend>Login</legend>
+    <form id="login-form" method="post" onsubmit="return validateLoginForm(event)">
+        <fieldset>
+            <legend>Login</legend>
 
-                <input type="text" id="login-name" placeholder="User name" maxlength="20" required> <br>
-                <input type="password" id="login-password" placeholder="Password" required> <br>
+            <input type="text" name="name" placeholder="User name" maxlength="20"> <br>
+            <input type="password" name="password" placeholder="Password" maxlength="20"> <br>
 
+            <p id="forgotPass">
                 <a class="forgotPass" href="restpassword.html">Forgot password?</a>
+            </p>
+            <script>
+                document.getElementById("forgotPass").style.margin = "1px"
+                document.getElementById("forgotPass").style.fontSize = "14px"
+                document.getElementById("forgotPass").style.marginLeft = "200px"
+            </script>
 
-                <button id="login-button" class="button" type="submit">Login</button>
+            <input id="login-button" class="button-l" type="submit" value="Login">
 
-                <p>Don't have an account? <a href="signup.html">Signup now</a></p>
+            <p>Don't have an account? <a href="signup.html">Signup now</a></p>
 
-            </fieldset>
-        </form>
+        </fieldset>
+    </form>
+
+    <script>
+        function validateLoginForm(event) {
+            event.preventDefault();
+
+            var name = document.forms["login-form"]["name"].value;
+            var password = document.forms["login-form"]["password"].value;
+
+            if (name === "" || password === "") {
+                window.alert("Please enter your name and password");
+                return false;
+
+            }
+            localStorage.setItem("username", name);
+            
+            window.location.href = "home.html";
 
 
+        }
+    </script>
 </body>
 
 </html>

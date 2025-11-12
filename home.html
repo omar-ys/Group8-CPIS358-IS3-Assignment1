@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Train sys</title>
+</head>
+<body>
+    <h1 id="welcome"></h1>
+
+    <script>
+        const name = localStorage.getItem("username");
+
+        if (name) {
+            document.getElementById("welcome").textContent = `Hi ${name}!`;
+        } else {
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

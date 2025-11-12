@@ -1,4 +1,6 @@
 body {
+
+    font-family: Verdana;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,12 +9,13 @@ body {
 
 fieldset {
     background-color: rgb(238, 238, 238);
-
+    
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 400px;
+    padding: 10px;
 }
 
 legend {
@@ -21,18 +24,18 @@ legend {
 }
 
 input {
-    padding: 8px;
+    font-family: Verdana;
+    padding: 12px;
     border-radius: 10px;
     border-width: 1px;
     width: 75%;
-    background-color: transparent;
-    
+    background-color: rgb(248, 248, 248); 
 }
 
-button {
+.button-l {
     margin-top: 3%;
-    padding: 8px;
-    border-radius: 10px;
+    padding: 12px;
+    border-radius: 15px;
     width: 80%;
     background-color: rgb(27, 166, 221);
     color: rgb(255, 255, 255);

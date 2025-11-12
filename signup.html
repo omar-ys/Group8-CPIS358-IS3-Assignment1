@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,24 +11,43 @@
 </head>
 
 <body>
-        <form id="signup-form" method="post">
-            <fieldset>
-                <legend>Register</legend>
+    <form id="signup-form" method="post" onsubmit="return validateSignupForm(event)">
+        <fieldset>
+            <legend>Register</legend>
 
-                <input type="text" id="signup-name" placeholder="User name" maxlength="20" required> <br>
-                <input type="email" id="signup-email" placeholder="Email" required> <br>
+            <input type="text" name="signup-name" placeholder="User name" maxlength="20" required> <br>
+            <input type="email" name="signup-email" placeholder="Email" required> <br>
 
-                <input type="password" id="signup-password" placeholder="Password" minlength="8" required> <br>
-                <input type="password" id="confirm-password" placeholder="Confirm Password" minlength="8" required> <br>
-
-                <button id="signup-button" class="button" type="submit">Register</button>
-
-                <p>have an account? <a href="login.html">Login now</a></p>
-
-            </fieldset>
-        </form>
+            <input type="password" name="password" placeholder="Password" minlength="8" maxlength="20" required><br>
+            <input type="password" name="confirm-password" placeholder="Confirm Password" minlength="8" maxlength="20" required> <br>
 
 
+            <input id="signup-button" class="button-l" type="submit" value="Register">
+
+            <p>have an account? <a href="login.html">Login now</a></p>
+
+        </fieldset>
+    </form>
+
+    <script>
+        function validateSignupForm(event) {
+            event.preventDefault();
+
+            var name = document.forms["signup-form"]["name"].value;
+            var password = document.forms["signup-form"]["password"].value;
+            var confirmPassword = document.forms["signup-form"]["confirm-password"].value;
+
+            if (password !== confirmPassword) {
+                window.alert("Passwords do not match!");
+                return false;
+            }
+
+            localStorage.setItem("username", name);
+
+            window.location.href = "home.html";
+
+        }
+    </script>
 </body>
 
 </html>
