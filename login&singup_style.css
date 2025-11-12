@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+fieldset {
+    background-color: rgb(238, 238, 238);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+legend {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 8px;
+    border-radius: 10px;
+    border-width: 1px;
+    width: 75%;
+    background-color: transparent;
+    
+}
+
+button {
+    margin-top: 3%;
+    padding: 8px;
+    border-radius: 10px;
+    width: 80%;
+    background-color: rgb(27, 166, 221);
+    color: rgb(255, 255, 255);
+    border: none;
+}

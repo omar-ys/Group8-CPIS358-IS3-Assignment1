@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login page</title>
+    <link rel="stylesheet" href="login&singup_style.css">
+    <style>
+        .forgotPass {
+            display: flex;
+            margin-top: -15px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+        <form id="login-form" method="post">
+            <fieldset>
+                <legend>Login</legend>
+
+                <input type="text" id="login-name" placeholder="User name" maxlength="20" required> <br>
+                <input type="password" id="login-password" placeholder="Password" required> <br>
+
+                <a class="forgotPass" href="restpassword.html">Forgot password?</a>
+
+                <button id="login-button" class="button" type="submit">Login</button>
+
+                <p>Don't have an account? <a href="signup.html">Signup now</a></p>
+
+            </fieldset>
+        </form>
+
+
+</body>
+
+</html>
