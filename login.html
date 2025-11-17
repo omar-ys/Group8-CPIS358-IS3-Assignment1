@@ -5,26 +5,25 @@
     <meta charset="UTF-8">
     <title>Login page</title>
     <link rel="stylesheet" href="login&singup_style.css">
-    <style>
-
-    </style>
 </head>
 
 <body>
-    <form id="login-form" method="post" onsubmit="return validateLoginForm(event)">
+    <form id="login-form" onsubmit="return validateLoginForm()">
         <fieldset>
             <legend>Login</legend>
 
-            <input type="text" name="name" placeholder="User name" maxlength="20"> <br>
-            <input type="password" name="password" placeholder="Password" maxlength="20"> <br>
+            <input id="login-username" type="text" name="name" placeholder="User name" maxlength="20" required> <br>
+            
+            <input id="login-password" type="password" name="password" placeholder="Password" maxlength="20" required> <br>
 
             <p id="forgotPass">
                 <a class="forgotPass" href="restpassword.html">Forgot password?</a>
             </p>
+
             <script>
-                document.getElementById("forgotPass").style.margin = "1px"
-                document.getElementById("forgotPass").style.fontSize = "14px"
-                document.getElementById("forgotPass").style.marginLeft = "200px"
+                document.getElementById("forgotPass").style.margin = "1px";
+                document.getElementById("forgotPass").style.fontSize = "14px";
+                document.getElementById("forgotPass").style.marginLeft = "200px";
             </script>
 
             <input id="login-button" class="button-l" type="submit" value="Login">
@@ -35,22 +34,43 @@
     </form>
 
     <script>
-        function validateLoginForm(event) {
-            event.preventDefault();
+        function validateLoginForm() {
+            // نجيب القيم من الحقول
+            var name = document.getElementById("login-username").value;
+            var password = document.getElementById("login-password").value;
 
-            var name = document.forms["login-form"]["name"].value;
-            var password = document.forms["login-form"]["password"].value;
-
+            // تحقق أساسي: الحقول مب فاضية
             if (name === "" || password === "") {
                 window.alert("Please enter your name and password");
                 return false;
-
             }
-            localStorage.setItem("username", name);
-            
+
+            // نقرأ بيانات المستخدم اللي انخزنت في صفحة التسجيل
+            var storedText = localStorage.getItem("userData");
+
+            // إذا ما فيه مستخدم مسجل أساساً
+            if (storedText === null) {
+                alert("No account found. Please signup first.");
+                return false;
+            }
+
+            // JSON.parse: يحول النص اللي في localStorage إلى object
+            var storedUser = JSON.parse(storedText);
+
+            // نتحقق إن الاسم والباسورد يطابقون بيانات التسجيل
+            if (name !== storedUser.username || password !== storedUser.password) {
+                alert("Wrong username or password");
+                return false;
+            }
+
+            // نخزن اسم المستخدم الحالي عشان نرحّب فيه في home.html
+            localStorage.setItem("username", storedUser.username);
+
+            // ننقل المستخدم للـ Home Page
             window.location.href = "home.html";
 
-
+            // نرجّع false عشان ما يعيد تحميل الصفحة
+            return false;
         }
     </script>
 </body>
