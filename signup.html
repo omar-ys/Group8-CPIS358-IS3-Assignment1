@@ -53,18 +53,9 @@
                 password: password
             };
 
-            // localStorage يخزن نص فقط → لازم نحوّل الـ object إلى نص
-            var userText = JSON.stringify(user);
-
-            // نخزن بيانات المستخدم
-            localStorage.setItem("userData", userText);
-
-            alert("Signup done! Redirecting to login page...");
-
-            // نحول المستخدم لصفحة تسجيل الدخول
             window.location.href = "login.html";
 
-            return false; // نمنع الفورم من التحديث الافتراضي
+            return false; // 
         }
 
     </script>
