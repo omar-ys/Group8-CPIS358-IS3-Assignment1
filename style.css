@@ -1,0 +1,22 @@
+nav {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+
+nav img,
+nav a {
+    color: black;
+    vertical-align: middle;
+    margin-right: 20px;
+    text-decoration: none;
+}
+
+
+.log-sign {
+    margin-top: 20px;
+    float: right;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
