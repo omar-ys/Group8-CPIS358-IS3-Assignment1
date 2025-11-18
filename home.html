@@ -1,33 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Train sys</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <title>Home</title>
+    <link rel="stylesheet" href="External_Style.css">
 
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <style>
+        .box {
+            background: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        h1 {
+            margin-top: 20px;
+            
+        }
+
+        .mode-box {
+            padding: 5px;
+            margin: 10px 0;
+            border: 3px solid #707071;
+            width: 5em;
+            cursor: pointer;
+        }
+        body.dark-mode .box,
+        body.dark-mode .shadow-box {
+            background-color: #333;
+            color: white;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        
+        function activateLightMode() {
+            document.body.style.color = "black";
+            document.body.style.background = "white";
+            document.body.className = "";
+
+        }
+
+        function activateDarkMode() {
+            document.body.style.color = "white";
+            document.body.style.background = "black";        
+            document.body.className = "dark-mode";
+
+        }
+
+        function registerHandler() {
+            var traditional = document.getElementById("traditional");
+            traditional.onclick = activateDarkMode;
+        }
+
+        window.onload = function () {
+            registerHandler();
+        };
+    </script>
+</head>
 <body>
 
+<header>
     <nav>
-        <a href="home.html"><img src="images/Minimalist_app_logo.png" width="75px" hight="75px"></a>
-        <a href="aboutUs.html">About us</a>
-        <a class="log-sign" href="login.html">Login</a>
-        <a class="log-sign" href="signup.html">Register</a>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="programs.html">My Programs</a></li>
+            <li><a href="trainer.html">Trainer</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="About-Us.html">About Us</a></li>          
+        </ul>
     </nav>
+</header>
 
-    <h1 id="welcome"></h1>
+<main>
+    
 
-    <script>
-        const name = localStorage.getItem("username");
+    <h1>Welcome to Gym Program Planner</h1>
 
-        if (name) {
-            document.getElementById("welcome").textContent = `Hi ${name}!`;
-        } else {
-            window.location.href = "login.html";
-        }
-    </script>
+    <div class="shadow-box">
+        <p>
+            This homepage is the starting point after login.
+            Use the navigation above to manage your workout programs,
+            read privacy information, or access the trainer page.
+        </p>
+    </div>
+
+    <div class="box">
+        <h2>Next Step</h2>
+        <p style="text-shadow: 1px 1px 2px rgb(70, 70, 67);">
+            Go to <strong>My Programs</strong> to view your workout tables
+            and program details.
+        </p>
+    </div>
+    <div id="inline" class="mode-box" onclick="activateLightMode()">Light Mode </div>
+    <div id="traditional" class="mode-box">Dark Mode</div>
+    <footer>
+    © 2025 Gym Planner Project - All rights reserved
+</footer>
+</main>
+
 
 </body>
-
 </html>
