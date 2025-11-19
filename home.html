@@ -88,12 +88,42 @@
                 and program details.
             </p>
         </div><br>
+        <div>
+            <p>
+                <a id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back Exercises</a>
+            </p>
+            <label>
+                Choose Exercise:
+                <select id="siteSelect" onchange="updateLink()">
+                    <option value="Back">Back</option>
+                    <option value="Chest">Chest</option>
+                    <option value="Leg">Leg</option>
+                </select>
+            </label>
+        </div>
         <footer>
             © 2025 Gym Planner Project - All rights reserved
         </footer>
     </main>
 
+    <script>
+        function updateLink(){
+            const link = document.getElementById("dynamicLink");
+            const selectedValue = document.getElementById("siteSelect").value;
 
+            if (selectedValue === "Back") {
+                link.href = "https://www.youtube.com/watch?v=jLvqKgW-_G8";
+                link.textContent = "Video for Back Exercises";
+            } else if (selectedValue === "Chest") {
+                link.href = "https://www.youtube.com/watch?v=fGm-ef-4PVk";
+                link.textContent = "Video for Chest Exercises";
+            } else if (selectedValue === "Leg") {
+                link.href = "https://www.youtube.com/watch?v=8zWDuWKdBZU";
+                link.textContent = "Video for Leg Exercises";
+            }
+
+        }
+    </script>
 </body>
 
 </html>
