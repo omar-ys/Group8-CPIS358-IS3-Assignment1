@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="External_Style.css">
-
+    <script src="theme.js"></script>
     <style>
         .box {
             background: white;
@@ -19,28 +19,6 @@
         }
     </style>
 
-    <script type="text/javascript">
-
-        function activateLightMode() {
-            document.body.style.color = "black";
-            document.body.style.background = "white";
-            document.body.className = "";
-
-        }
-
-        function activateDarkMode() {
-            document.body.style.color = "white";
-            document.body.style.background = "black";
-            document.body.className = "dark-mode";
-
-        }
-
-        function traditional() {
-            var traditional = document.getElementById("darkBtn");
-            traditional.onclick = activateDarkMode;
-        }
-
-    </script>
 </head>
 
 <body onload="traditional()">
@@ -90,7 +68,8 @@
         </div><br>
         <div>
             <p>
-                <a id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back Exercises</a>
+                <a id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back
+                    Exercises</a>
             </p>
             <label>
                 Choose Exercise:
@@ -107,7 +86,7 @@
     </main>
 
     <script>
-        function updateLink(){
+        function updateLink() {
             const link = document.getElementById("dynamicLink");
             const selectedValue = document.getElementById("siteSelect").value;
 

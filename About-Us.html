@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="External_Style.css">
-
+    <script src="theme.js"></script>
 
     <style>
         .box {
@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body onload="traditional()">
 
     <header>
         <nav class="top-nav">
@@ -34,7 +34,13 @@
                 <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
                 <li><a class="shadow-box" href="privacy.html">Privacy</a></li>
                 <li><a class="shadow-box" href="About-Us.html">About Us</a></li>
-                <li><a href="home.html">Theme</a></li>
+                <nav class="menu">
+                    Theme
+                    <ul>
+                        <li><button id="lightBtn" onclick="activateLightMode()">Light Mode</button></li>
+                        <li><button id="darkBtn">Dark Mode</button></li>
+                    </ul>
+                </nav>
                 <li class="right-nav"><a class="log-sign" href="login.html">login</a></li>
                 <li><a class="log-sign" href="signup.html">register</a></li>
             </ul>
@@ -65,7 +71,7 @@
                         rather than waiting for a weekly report.
                     </li>
                     <li>
-                        <strong>Video:</strong> YouTube links to exercises to demonstrate proper technique directly within the plan.
+                        <strong>Video Integration:</strong> YouTube links to exercises to demonstrate proper technique directly within the plan.
                     </li>
                 </ul>
             </article>

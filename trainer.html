@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <title>Privacy Policy</title>
     <link rel="stylesheet" href="External_Style.css">
-
+    <script src="theme.js"></script>
     <style>
 
     </style>
 </head>
 
-<body>
+<body onload="traditional()">
 
     <header>
         <nav class="top-nav">
@@ -22,7 +22,13 @@
                 <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
                 <li><a class="shadow-box" href="privacy.html">Privacy</a></li>
                 <li><a class="shadow-box" href="About-Us.html">About Us</a></li>
-                <li><a href="home.html">Theme</a></li>
+                <nav class="menu">
+                    Theme
+                    <ul>
+                        <li><button id="lightBtn" onclick="activateLightMode()">Light Mode</button></li>
+                        <li><button id="darkBtn">Dark Mode</button></li>
+                    </ul>
+                </nav>
                 <li class="right-nav"><a class="log-sign" href="login.html">login</a></li>
                 <li><a class="log-sign" href="signup.html">register</a></li>
             </ul>
