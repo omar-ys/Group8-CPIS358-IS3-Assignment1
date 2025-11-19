@@ -62,6 +62,17 @@
         h3 {
             margin-top: 0;
         }
+        .button-1 {
+            margin-top: 3%;
+            padding: 15px;
+            border-radius: 15px;
+            width: 8%;
+            background-color: rgb(27, 166, 221);
+            color: rgb(255, 255, 255);
+            border: none;
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 
@@ -96,7 +107,7 @@
 
             <p>Click <strong>Add Program</strong> to create a new workout program.</p>
 
-            <p><button id="add-program-btn">Add Program</button></p>
+            <p><button id="add-program-btn" class="button-1" >Add Program</button></p>
 
             <div id="form-container"></div>
         </section>
@@ -110,6 +121,17 @@
                     implemented later using ASP.NET.</p>
             </div>
         </section>
+
+        <section>
+            <h2>Add Notes</h2>
+            <div id="nButton">
+            <button type="button" class="button-1" onclick="addCustomNote()">Add</button>
+            <button type="button" class="button-1" onclick="clearNotes()">Clear</button>
+        </div>
+
+    <ul id="notesList"></ul>
+
+</section>
 
         <footer>
             © 2025 Gym Planner Project - All rights reserved
@@ -218,8 +240,32 @@
                 programTable.innerHTML = tableHTML;
 
                 resultsDiv.style.display = "block";
+
+                
+
+                
+
             };
+
+            
         };
+
+        function addCustomNote() {
+            var userText = prompt("Enter your note:"); 
+            var list = document.getElementById("notesList");
+
+            var li = document.createElement("li");
+            li.appendChild(document.createTextNode(userText));
+            list.appendChild(li);
+            
+            }
+
+        function clearNotes() {
+            document.getElementById("notesList").innerHTML = "";
+            c = 1;
+        }
+
+
     </script>
 
 </body>
