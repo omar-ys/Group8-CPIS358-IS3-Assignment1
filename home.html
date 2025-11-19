@@ -21,12 +21,12 @@
 
 </head>
 
-<body onload="traditional()">
+<body id="top" onload="traditional()">
 
     <header>
         <nav class="top-nav">
             <ul>
-                <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
+                <li><a href="About-Us.html"><img id ="mainImg" src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
                 </li>
                 <li><a class="shadow-box" href="home.html">Home</a></li>
                 <li><a class="shadow-box" href="programs.html">My Programs</a></li>
@@ -85,6 +85,16 @@
                     Exercises</a>
             </p>
         </div>
+        <div class="box">
+            <h2>Change Logo Image</h2>
+            <p>Click on an image to set it as the main logo.</p>
+            <img src="images/Minimalist_app_logo.png" alt="fitness image" width="100" height="100" onclick="document.getElementById('mainImg').src ='images/Minimalist_app_logo.png'">
+            <img src="images/alt-logo.png" alt="fitness image" width="100" height="100" onclick="document.getElementById('mainImg').src ='images/alt-logo.png'">
+            <P><a href="#top">Back to the top</a></P>
+        </div>
+
+        
+
         <footer>
             © 2025 Gym Planner Project - All rights reserved
         </footer>
