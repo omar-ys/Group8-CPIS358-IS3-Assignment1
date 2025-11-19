@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="External_Style.css">
-
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    
     <style>
         .box {
             background: white;
@@ -16,7 +15,7 @@
 
         h1 {
             margin-top: 20px;
-            
+
         }
 
         .mode-box {
@@ -26,16 +25,23 @@
             width: 5em;
             cursor: pointer;
         }
+
         body.dark-mode .box,
         body.dark-mode .shadow-box {
             background-color: #333;
             color: white;
         }
 
+        .log-sign {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
     </style>
 
     <script type="text/javascript">
-        
+
         function activateLightMode() {
             document.body.style.color = "black";
             document.body.style.background = "white";
@@ -45,7 +51,7 @@
 
         function activateDarkMode() {
             document.body.style.color = "white";
-            document.body.style.background = "black";        
+            document.body.style.background = "black";
             document.body.className = "dark-mode";
 
         }
@@ -60,47 +66,53 @@
         };
     </script>
 </head>
+
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="programs.html">My Programs</a></li>
-            <li><a href="trainer.html">Trainer</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="About-Us.html">About Us</a></li>          
-        </ul>
-    </nav>
-</header>
+    <header>
+        <nav class="shadow-box">
+            <ul>
+                <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
+                </li>
+                <li><a class="shadow-box" href="home.html">Home</a></li>
+                <li><a class="shadow-box" href="programs.html">My Programs</a></li>
+                <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
+                <li><a class="shadow-box" href="privacy.html">Privacy</a></li>
+                <li><a class="shadow-box" href="About-Us.html">About Us</a></li>
+                <li class="right-nav"><a class="log-sign" href="login.html">login</a></li>
+                <li><a class="log-sign" href="signup.html">register</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<main>
-    
+    <main>
 
-    <h1>Welcome to Gym Program Planner</h1>
 
-    <div class="shadow-box">
-        <p>
-            This homepage is the starting point after login.
-            Use the navigation above to manage your workout programs,
-            read privacy information, or access the trainer page.
-        </p>
-    </div>
+        <h1>Welcome to Gym Program Planner</h1>
 
-    <div class="box">
-        <h2>Next Step</h2>
-        <p style="text-shadow: 1px 1px 2px rgb(70, 70, 67);">
-            Go to <strong>My Programs</strong> to view your workout tables
-            and program details.
-        </p>
-    </div>
-    <div id="inline" class="mode-box" onclick="activateLightMode()">Light Mode </div>
-    <div id="traditional" class="mode-box">Dark Mode</div>
-    <footer>
-    © 2025 Gym Planner Project - All rights reserved
-</footer>
-</main>
+        <div class="shadow-box">
+            <p>
+                This homepage is the starting point after login.
+                Use the navigation above to manage your workout programs,
+                read privacy information, or access the trainer page.
+            </p>
+        </div>
+
+        <div class="box">
+            <h2>Next Step</h2>
+            <p style="text-shadow: 1px 1px 2px rgb(70, 70, 67);">
+                Go to <strong>My Programs</strong> to view your workout tables
+                and program details.
+            </p>
+        </div>
+        <div id="inline" class="mode-box" onclick="activateLightMode()">Light Mode </div>
+        <div id="traditional" class="mode-box">Dark Mode</div>
+        <footer>
+            © 2025 Gym Planner Project - All rights reserved
+        </footer>
+    </main>
 
 
 </body>
+
 </html>
