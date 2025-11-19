@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>My Programs</title>
     <link rel="stylesheet" href="External_Style.css">
-    
-    <style>
 
+    <style>
         /* general class */
         .card {
             background-color: white;
@@ -15,7 +15,7 @@
         }
 
         /* shadow */
-        .shadow-box {
+        .shadow {
             box-shadow: 2px 2px 5px gray;
             padding: 5px;
             background-color: white;
@@ -44,7 +44,9 @@
             background-color: #f2f2f2;
         }
 
-        table, th, td {
+        table,
+        th,
+        td {
             border: 1px solid black;
             border-collapse: collapse;
             padding: 5px;
@@ -55,157 +57,165 @@
             display: none;
         }
 
-        h1, h2, h3 {
+        h1,
+        h2,
+        h3 {
             margin-top: 0;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a></li>
-            <li><a href="home.html">Home</a></li> 
-            <li><a href="programs.html">My Programs</a></li>
-            <li><a href="trainer.html">Trainer</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="About-Us.html">About Us</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <nav class="top-nav">
+            <ul>
+                <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a></li>
+                <li><a class="shadow-box" href="home.html">Home</a></li>
+                <li><a class="shadow-box" href="programs.html">My Programs</a></li>
+                <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
+                <li><a class="shadow-box" href="privacy.html">Privacy</a></li>
+                <li><a class="shadow-box" href="About-Us.html">About Us</a></li>
+                <li><a href="home.html">Theme</a></li>
+                <li class="right-nav"><a class="log-sign" href="login.html">login</a></li>
+                <li><a class="log-sign" href="signup.html">register</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<main>
+    <main>
 
-    <section class="card shadow-box">
-        <h1 style="text-shadow:1px 1px 2px gray;">My Programs</h1>
+        <section class="card shadow">
+            <h1 style="text-shadow:1px 1px 2px gray;">My Programs</h1>
 
-        <p>Click <strong>Add Program</strong> to create a new workout program.</p>
+            <p>Click <strong>Add Program</strong> to create a new workout program.</p>
 
-        <p><button id="add-program-btn">Add Program</button></p>
+            <p><button id="add-program-btn">Add Program</button></p>
 
-        <div id="form-container"></div>
-    </section>
+            <div id="form-container"></div>
+        </section>
 
 
-    <section>
-        <div id="results">
-            <h2>Program Table</h2>
-            <table id="program-table"></table>
-            <p style="color: red;"><strong>Note:</strong> Saving this program is not available now. It will be implemented later using ASP.NET.</p>
-        </div>
-    </section>
+        <section>
+            <div id="results">
+                <h2>Program Table</h2>
+                <table id="program-table"></table>
+                <p style="color: red;"><strong>Note:</strong> Saving this program is not available now. It will be
+                    implemented later using ASP.NET.</p>
+            </div>
+        </section>
 
-    <footer>
-        © 2025 Gym Planner Project - All rights reserved
-    </footer>
+        <footer>
+            © 2025 Gym Planner Project - All rights reserved
+        </footer>
 
-</main>
+    </main>
 
-<script>
-    var days = 0;
+    <script>
+        var days = 0;
 
-    var addButton = document.getElementById("add-program-btn");
-    var formContainer = document.getElementById("form-container");
-    var resultsDiv = document.getElementById("results");
-    var programTable = document.getElementById("program-table");
+        var addButton = document.getElementById("add-program-btn");
+        var formContainer = document.getElementById("form-container");
+        var resultsDiv = document.getElementById("results");
+        var programTable = document.getElementById("program-table");
 
-    addButton.onclick = function () {
+        addButton.onclick = function () {
 
-        while (true) {
-            days = parseInt(prompt("How many days in your program? (1 - 6)"), 10);
+            while (true) {
+                days = parseInt(prompt("How many days in your program? (1 - 6)"), 10);
 
-            if (!isNaN(days) && days >= 1 && days <= 6) {
-                break;
+                if (!isNaN(days) && days >= 1 && days <= 6) {
+                    break;
+                }
+
+                alert("Please enter a number between 1 and 6.");
             }
 
-            alert("Please enter a number between 1 and 6.");
-        }
-
-        var formHTML = "";
-
-        for (var d = 1; d <= days; d++) {
-
-            formHTML += "<h3>Day " + d + "</h3>";
-
-            formHTML += "Exercise 1: <input type='text' id='ex" + d + "_1' placeholder='ex. Back'> ";
-            formHTML += "Sets: <input type='number' id='set" + d + "_1' min='1' placeholder='ex. 3'> ";
-            formHTML += "Weight: <input type='number' id='wt" + d + "_1' min='0' placeholder='ex. 20'><br>";
-
-            formHTML += "Exercise 2: <input type='text' id='ex" + d + "_2' placeholder='ex. Chest'> ";
-            formHTML += "Sets: <input type='number' id='set" + d + "_2' min='1' placeholder='ex. 4'> ";
-            formHTML += "Weight: <input type='number' id='wt" + d + "_2' min='0' placeholder='ex. 50'><br>";
-
-            formHTML += "Exercise 3: <input type='text' id='ex" + d + "_3' placeholder='ex. Leg'> ";
-            formHTML += "Sets: <input type='number' id='set" + d + "_3' min='1' placeholder='ex. 2'> ";
-            formHTML += "Weight: <input type='number' id='wt" + d + "_3' min='0' placeholder='ex. 70' ><br><br> ";
-        }
-
-        formHTML += "<button type='button' id='create-table-btn'>Create Program Table</button>";
-
-        formContainer.innerHTML = formHTML;
-
-        var createTableBtn = document.getElementById("create-table-btn");
-
-        createTableBtn.onclick = function () {
-
-            var tableHTML = "";
-            tableHTML += "<tr>";
-            tableHTML += "<th>Day</th>";
-            tableHTML += "<th>Exercise 1</th>";
-            tableHTML += "<th>Exercise 2</th>";
-            tableHTML += "<th>Exercise 3</th>";
-            tableHTML += "</tr>";
+            var formHTML = "";
 
             for (var d = 1; d <= days; d++) {
 
-                // VALIDATION
-                var s1 = parseInt(document.getElementById("set" + d + "_1").value, 10);
-                var s2 = parseInt(document.getElementById("set" + d + "_2").value, 10);
-                var s3 = parseInt(document.getElementById("set" + d + "_3").value, 10);
+                formHTML += "<h3>Day " + d + "</h3>";
 
-                var w1 = parseInt(document.getElementById("wt" + d + "_1").value, 10);
-                var w2 = parseInt(document.getElementById("wt" + d + "_2").value, 10);
-                var w3 = parseInt(document.getElementById("wt" + d + "_3").value, 10);
+                formHTML += "Exercise 1: <input type='text' id='ex" + d + "_1' placeholder='ex. Back'> ";
+                formHTML += "Sets: <input type='number' id='set" + d + "_1' min='1' placeholder='ex. 3'> ";
+                formHTML += "Weight: <input type='number' id='wt" + d + "_1' min='0' placeholder='ex. 20'><br>";
 
-                var e1 = document.getElementById("ex" + d + "_1").value;
-                var e2 = document.getElementById("ex" + d + "_2").value;
-                var e3 = document.getElementById("ex" + d + "_3").value;  
-                
-                if (e1 === "" && e2 === "" && e3 === "") {
-                    alert("Please fill at least one exercise for Day " + d + ".");
-                    return;
-                }
+                formHTML += "Exercise 2: <input type='text' id='ex" + d + "_2' placeholder='ex. Chest'> ";
+                formHTML += "Sets: <input type='number' id='set" + d + "_2' min='1' placeholder='ex. 4'> ";
+                formHTML += "Weight: <input type='number' id='wt" + d + "_2' min='0' placeholder='ex. 50'><br>";
 
-
-                if ((isNaN(s1) || s1 <= 0) || (isNaN(s2) || s2 <= 0) || (isNaN(s3) || s3 <= 0)) {
-
-                    alert("Please enter a valid number for sets in Day " + d);
-                    return;
-                }
-
-                if ((isNaN(w1) || w1 < 0) || (isNaN(w2) || w2 < 0) || (isNaN(w3) || w3 < 0)) {
-
-                    alert("Please enter a valid weight in Day " + d);
-                    return;
-                }
-
-                tableHTML += "<tr>";
-                tableHTML += "<td>Day " + d + "</td>";
-
-                tableHTML += "<td>" + e1 + "<br>Sets: " + s1 + "<br>Weight: " + w1 + "</td>";
-                tableHTML += "<td>" + e2 + "<br>Sets: " + s2 + "<br>Weight: " + w2 + "</td>";
-                tableHTML += "<td>" + e3 + "<br>Sets: " + s3 + "<br>Weight: " + w3 + "</td>";
-
-                tableHTML += "</tr>";
+                formHTML += "Exercise 3: <input type='text' id='ex" + d + "_3' placeholder='ex. Leg'> ";
+                formHTML += "Sets: <input type='number' id='set" + d + "_3' min='1' placeholder='ex. 2'> ";
+                formHTML += "Weight: <input type='number' id='wt" + d + "_3' min='0' placeholder='ex. 70' ><br><br> ";
             }
 
-            programTable.innerHTML = tableHTML;
-            
-            resultsDiv.style.display = "block";
+            formHTML += "<button type='button' id='create-table-btn'>Create Program Table</button>";
+
+            formContainer.innerHTML = formHTML;
+
+            var createTableBtn = document.getElementById("create-table-btn");
+
+            createTableBtn.onclick = function () {
+
+                var tableHTML = "";
+                tableHTML += "<tr>";
+                tableHTML += "<th>Day</th>";
+                tableHTML += "<th>Exercise 1</th>";
+                tableHTML += "<th>Exercise 2</th>";
+                tableHTML += "<th>Exercise 3</th>";
+                tableHTML += "</tr>";
+
+                for (var d = 1; d <= days; d++) {
+
+                    // VALIDATION
+                    var s1 = parseInt(document.getElementById("set" + d + "_1").value, 10);
+                    var s2 = parseInt(document.getElementById("set" + d + "_2").value, 10);
+                    var s3 = parseInt(document.getElementById("set" + d + "_3").value, 10);
+
+                    var w1 = parseInt(document.getElementById("wt" + d + "_1").value, 10);
+                    var w2 = parseInt(document.getElementById("wt" + d + "_2").value, 10);
+                    var w3 = parseInt(document.getElementById("wt" + d + "_3").value, 10);
+
+                    var e1 = document.getElementById("ex" + d + "_1").value;
+                    var e2 = document.getElementById("ex" + d + "_2").value;
+                    var e3 = document.getElementById("ex" + d + "_3").value;
+
+                    if (e1 === "" && e2 === "" && e3 === "") {
+                        alert("Please fill at least one exercise for Day " + d + ".");
+                        return;
+                    }
+
+
+                    if ((isNaN(s1) || s1 <= 0) || (isNaN(s2) || s2 <= 0) || (isNaN(s3) || s3 <= 0)) {
+
+                        alert("Please enter a valid number for sets in Day " + d);
+                        return;
+                    }
+
+                    if ((isNaN(w1) || w1 < 0) || (isNaN(w2) || w2 < 0) || (isNaN(w3) || w3 < 0)) {
+
+                        alert("Please enter a valid weight in Day " + d);
+                        return;
+                    }
+
+                    tableHTML += "<tr>";
+                    tableHTML += "<td>Day " + d + "</td>";
+
+                    tableHTML += "<td>" + e1 + "<br>Sets: " + s1 + "<br>Weight: " + w1 + "</td>";
+                    tableHTML += "<td>" + e2 + "<br>Sets: " + s2 + "<br>Weight: " + w2 + "</td>";
+                    tableHTML += "<td>" + e3 + "<br>Sets: " + s3 + "<br>Weight: " + w3 + "</td>";
+
+                    tableHTML += "</tr>";
+                }
+
+                programTable.innerHTML = tableHTML;
+
+                resultsDiv.style.display = "block";
+            };
         };
-    };
-</script>
+    </script>
 
 </body>
+
 </html>

@@ -1,12 +1,14 @@
-nav {
+nav.top-nav {
     background-color: #f0f0f0;
     border-radius: 15px;
+    height: 75px;
 }
 
-nav ul {
+nav.top-nav ul {
     display: flex;
     align-items: center;
-    list-style: none;   /* Removes the dots */
+    list-style: none;
+    /* Removes the dots */
 }
 
 .right-nav {
@@ -18,6 +20,43 @@ nav a {
     color: black;
     margin-right: 20px;
     text-decoration: none;
+}
+
+.log-sign {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav.menu ul {
+    display: none;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav.menu:hover ul {
+    display: block;
+}
+
+nav.menu ul li button {
+    padding: 10px 15px;
+
+}
+
+nav.menu ul li button:hover {
+    background-color: lightblue;
+}
+
+
+body.dark-mode .top-nav,
+body.dark-mode .box,
+body.dark-mode .shadow-box,
+body.dark-mode .menu {
+    background-color: #333;
+    color: white;
 }
 
 footer {

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="External_Style.css">
-    
+
     <style>
         .box {
             background: white;
@@ -16,27 +16,6 @@
         h1 {
             margin-top: 20px;
 
-        }
-
-        .mode-box {
-            padding: 5px;
-            margin: 10px 0;
-            border: 3px solid #707071;
-            width: 5em;
-            cursor: pointer;
-        }
-
-        body.dark-mode .box,
-        body.dark-mode .shadow-box {
-            background-color: #333;
-            color: white;
-        }
-
-        .log-sign {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
         }
     </style>
 
@@ -56,21 +35,18 @@
 
         }
 
-        function registerHandler() {
-            var traditional = document.getElementById("traditional");
+        function traditional() {
+            var traditional = document.getElementById("darkBtn");
             traditional.onclick = activateDarkMode;
         }
 
-        window.onload = function () {
-            registerHandler();
-        };
     </script>
 </head>
 
-<body>
+<body onload="traditional()">
 
     <header>
-        <nav class="shadow-box">
+        <nav class="top-nav">
             <ul>
                 <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
                 </li>
@@ -79,6 +55,13 @@
                 <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
                 <li><a class="shadow-box" href="privacy.html">Privacy</a></li>
                 <li><a class="shadow-box" href="About-Us.html">About Us</a></li>
+                <nav class="menu">
+                    Theme
+                    <ul>
+                        <li><button id="lightBtn" onclick="activateLightMode()">Light Mode</button></li>
+                        <li><button id="darkBtn">Dark Mode</button></li>
+                    </ul>
+                </nav>
                 <li class="right-nav"><a class="log-sign" href="login.html">login</a></li>
                 <li><a class="log-sign" href="signup.html">register</a></li>
             </ul>
@@ -104,9 +87,7 @@
                 Go to <strong>My Programs</strong> to view your workout tables
                 and program details.
             </p>
-        </div>
-        <div id="inline" class="mode-box" onclick="activateLightMode()">Light Mode </div>
-        <div id="traditional" class="mode-box">Dark Mode</div>
+        </div><br>
         <footer>
             © 2025 Gym Planner Project - All rights reserved
         </footer>
