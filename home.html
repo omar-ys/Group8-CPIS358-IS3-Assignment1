@@ -9,8 +9,8 @@
     <style>
         .box {
             background: white;
-            border: 1px solid #ccc;
             padding: 10px;
+            margin: 0px 100px 50px 100px;
         }
 
         h1 {
@@ -55,7 +55,10 @@
             <p>
                 This homepage is the starting point after login.
                 Use the navigation above to manage your workout programs,
-                read privacy information, or access the trainer page.
+                read privacy information, access the trainer page, or 
+                <a style="color: #886bb9;" href="#dynamicLink">
+                    watch a youtube video to find the best exercises
+                </a>.
             </p>
         </div>
 
@@ -66,11 +69,7 @@
                 and program details.
             </p>
         </div><br>
-        <div>
-            <p>
-                <a id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back
-                    Exercises</a>
-            </p>
+        <div class="box">
             <label>
                 Choose Exercise:
                 <select id="siteSelect" onchange="updateLink()">
@@ -79,6 +78,10 @@
                     <option value="Leg">Leg</option>
                 </select>
             </label>
+            <p>
+                <a style="color: #886bb9;" id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back
+                    Exercises</a>
+            </p>
         </div>
         <footer>
             © 2025 Gym Planner Project - All rights reserved
