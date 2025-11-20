@@ -8,16 +8,16 @@
     <script src="theme.js"></script>
     <style>
         .box {
-            background:  #f0f0f0;
+            background: #f0f0f0;
             padding: 10px;
             margin: 0px 100px 50px 100px;
             border-radius: 20px;
 
         }
+
         img {
             cursor: pointer;
         }
-
     </style>
 
 </head>
@@ -27,7 +27,8 @@
     <header>
         <nav class="top-nav">
             <ul>
-                <li><a href="About-Us.html"><img id ="mainImg" src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
+                <li><a href="About-Us.html"><img id="mainImg" src="images/Minimalist_app_logo.png" width="75px"
+                            height="75px"></a>
                 </li>
                 <li><a class="shadow-box" href="home.html">Home</a></li>
                 <li><a class="shadow-box" href="programs.html">My Programs</a></li>
@@ -60,7 +61,7 @@
                 <a style="color: #886bb9;" href="#dynamicLink">
                     watch a youtube video to find the best exercises
                 </a>.
-            
+
             <p>
         </div>
 
@@ -73,18 +74,24 @@
             <p> You can click the picture in top of the page to know <strong>About Us</strong></p>
         </div><br>
         <div class="box">
-            <p><label>
-                Choose Exercise:
-                <select id="siteSelect" onchange="updateLink()">
-                    <option value="Back">Back</option>
-                    <option value="Chest">Chest</option>
-                    <option value="Leg">Leg</option>
-                </select>
-            </label></p>
+            <h2>Exercise Videos</h2>
+            <p>Select an exercise from the dropdown menu to view a relatedworkout video.</p>
             <p>
-                <a style="color: #886bb9;" id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back
-                    Exercises</a>
+                <label>
+                    Choose Exercise:
+                    <select id="siteSelect" onchange="updateLink()">
+                        <option value="Back">Back</option>
+                        <option value="Chest">Chest</option>
+                        <option value="Leg">Leg</option>
+                    </select>
+                </label>
             </p>
+            <div style="text-align: center;">
+                <img id="dynamicImage" src="images/Backmuscle.png" width="300px" height="300px" alt="Back muscle">
+                <p style="font-size: 20px;">
+                    <a style="color: #886bb9;" id="dynamicLink" href="https://www.youtube.com/watch?v=jLvqKgW-_G8" target="_blank">Video for back Exercises</a>
+                </p>
+            </div>
         </div>
         <div class="box">
             <h2>Change Logo Image</h2>
@@ -94,7 +101,7 @@
             <P><a href="#top">Back to the top</a></P>
         </div>
 
-        
+
 
         <footer>
             © 2025 Gym Planner Project - All rights reserved
@@ -105,16 +112,23 @@
         function updateLink() {
             const link = document.getElementById("dynamicLink");
             const selectedValue = document.getElementById("siteSelect").value;
+            const image = document.getElementById("dynamicImage");
 
             if (selectedValue === "Back") {
                 link.href = "https://www.youtube.com/watch?v=jLvqKgW-_G8";
                 link.textContent = "Video for Back Exercises";
+                image.src = "images/Backmuscle.png";
+                image.alt = "back muscle";
             } else if (selectedValue === "Chest") {
                 link.href = "https://www.youtube.com/watch?v=fGm-ef-4PVk";
                 link.textContent = "Video for Chest Exercises";
+                image.src = "images/Chestmuscle.png";
+                image.alt = "chest muscle";
             } else if (selectedValue === "Leg") {
                 link.href = "https://www.youtube.com/watch?v=8zWDuWKdBZU";
                 link.textContent = "Video for Leg Exercises";
+                image.src = "images/Legmuscle.png";
+                image.alt = "leg muscle";
             }
 
         }
