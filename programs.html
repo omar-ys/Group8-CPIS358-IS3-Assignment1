@@ -22,22 +22,6 @@
 
         }
 
-        .layer-bottom {
-
-            padding: 15px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .layer-top {
-            background: yellow;
-            padding: 5px;
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            z-index: 5;
-        }
-
         section {
             margin-bottom: 20px;
             border: 1px solid #ccc;
@@ -62,6 +46,7 @@
         h3 {
             margin-top: 0;
         }
+
         .button-1 {
             margin-top: 3%;
             padding: 15px;
@@ -72,7 +57,6 @@
             border: none;
             cursor: pointer;
         }
-        
     </style>
 </head>
 
@@ -81,7 +65,8 @@
     <header>
         <nav class="top-nav">
             <ul>
-                <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a></li>
+                <li><a href="About-Us.html"><img src="images/Minimalist_app_logo.png" width="75px" height="75px"></a>
+                </li>
                 <li><a class="shadow-box" href="home.html">Home</a></li>
                 <li><a class="shadow-box" href="programs.html">My Programs</a></li>
                 <li><a class="shadow-box" href="trainer.html">Trainer</a></li>
@@ -107,7 +92,7 @@
 
             <p>Click <strong>Add Program</strong> to create a new workout program.</p>
 
-            <p><button id="add-program-btn" class="button-1" >Add Program</button></p>
+            <p><button id="add-program-btn" class="button-1">Add Program</button></p>
 
             <div id="form-container"></div>
         </section>
@@ -125,13 +110,13 @@
         <section>
             <h2>Add Notes</h2>
             <div id="nButton">
-            <button type="button" class="button-1" onclick="addCustomNote()">Add</button>
-            <button type="button" class="button-1" onclick="clearNotes()">Clear</button>
-        </div>
+                <button type="button" class="button-1" onclick="addCustomNote()">Add</button>
+                <button type="button" class="button-1" onclick="clearNotes()">Clear</button>
+            </div>
 
-    <ul id="notesList"></ul>
+            <ul id="notesList"></ul>
 
-</section>
+        </section>
 
         <footer>
             © 2025 Gym Planner Project - All rights reserved
@@ -143,11 +128,12 @@
         var days = 0;
 
         var addButton = document.getElementById("add-program-btn");
-        var formContainer = document.getElementById("form-container");
         var resultsDiv = document.getElementById("results");
-        var programTable = document.getElementById("program-table");
+
+
 
         addButton.onclick = function () {
+
 
             while (true) {
                 days = parseInt(prompt("How many days in your program? (1 - 6)"), 10);
@@ -159,113 +145,118 @@
                 alert("Please enter a number between 1 and 6.");
             }
 
-            var formHTML = "";
+
+            const formContainer = document.getElementById("form-container");
+            formContainer.innerHTML = "";
 
             for (var d = 1; d <= days; d++) {
+                const formHTML = document.createElement("fieldset")
+                formHTML.innerHTML = `
+                    <legend><h3>Day ${d}</h3></legend> 
+        
+                        <label>Exercise 1: <input type="text" id="ex${d}_1" placeholder="ex. Back" > </label>
+                        <label>Sets: <input type="number" id="set${d}_1" min="1" max="30" placeholder="ex. 3" > </label>
+                        <label>Weight: <input type="number" id="wt${d}_1" min="0" placeholder="ex. 20" ></label><br>
 
-                formHTML += "<h3>Day " + d + "</h3>";
+                        <label>Exercise 2: <input type="text" id="ex${d}_2" placeholder="ex. Chest"> </label>
+                        <label>Sets: <input type="number" id="set${d}_2" min="1" max="30" placeholder="ex. 4"> </label>
+                        <label>Weight: <input type="number" id="wt${d}_2" min="0" placeholder="ex. 50"></label><br>
 
-                formHTML += "Exercise 1: <input type='text' id='ex" + d + "_1' placeholder='ex. Back'> ";
-                formHTML += "Sets: <input type='number' id='set" + d + "_1' min='1' placeholder='ex. 3'> ";
-                formHTML += "Weight: <input type='number' id='wt" + d + "_1' min='0' placeholder='ex. 20'><br>";
+                        <label>Exercise 3: <input type="text" id="ex${d}_3" placeholder="ex. Leg"> </label>
+                        <label>Sets: <input type="number" id="set${d}_3" min="1" max="30" placeholder="ex. 2"> </label>
+                        <label>Weight: <input type="number" id="wt${d}_3" min="0" placeholder="ex. 70"></label><br><br>
+                `;
+                formContainer.appendChild(formHTML);
 
-                formHTML += "Exercise 2: <input type='text' id='ex" + d + "_2' placeholder='ex. Chest'> ";
-                formHTML += "Sets: <input type='number' id='set" + d + "_2' min='1' placeholder='ex. 4'> ";
-                formHTML += "Weight: <input type='number' id='wt" + d + "_2' min='0' placeholder='ex. 50'><br>";
-
-                formHTML += "Exercise 3: <input type='text' id='ex" + d + "_3' placeholder='ex. Leg'> ";
-                formHTML += "Sets: <input type='number' id='set" + d + "_3' min='1' placeholder='ex. 2'> ";
-                formHTML += "Weight: <input type='number' id='wt" + d + "_3' min='0' placeholder='ex. 70' ><br><br> ";
             }
 
-            formHTML += "<button type='button' id='create-table-btn'>Create Program Table</button>";
 
-            formContainer.innerHTML = formHTML;
+            const createBtn = document.createElement("button");
+            createBtn.id = "create-table-btn";
+            createBtn.textContent = "Create Program Table";
+            createBtn.className = "button-1";
+            formContainer.appendChild(createBtn);
 
-            var createTableBtn = document.getElementById("create-table-btn");
 
-            createTableBtn.onclick = function () {
 
-                var tableHTML = "";
-                tableHTML += "<tr>";
-                tableHTML += "<th>Day</th>";
-                tableHTML += "<th>Exercise 1</th>";
-                tableHTML += "<th>Exercise 2</th>";
-                tableHTML += "<th>Exercise 3</th>";
-                tableHTML += "</tr>";
+            const programTable = document.getElementById("program-table");
 
-                for (var d = 1; d <= days; d++) {
+            createBtn.onclick = function () {
 
-                    // VALIDATION
-                    var s1 = parseInt(document.getElementById("set" + d + "_1").value, 10);
-                    var s2 = parseInt(document.getElementById("set" + d + "_2").value, 10);
-                    var s3 = parseInt(document.getElementById("set" + d + "_3").value, 10);
+                let tableHTML = `
+            <tr>
+                <th>Day</th>
+                <th>Exercise 1</th>
+                <th>Exercise 2</th>
+                <th>Exercise 3</th>
+            </tr>
+        `;
 
-                    var w1 = parseInt(document.getElementById("wt" + d + "_1").value, 10);
-                    var w2 = parseInt(document.getElementById("wt" + d + "_2").value, 10);
-                    var w3 = parseInt(document.getElementById("wt" + d + "_3").value, 10);
+                for (let d = 1; d <= days; d++) {
 
-                    var e1 = document.getElementById("ex" + d + "_1").value;
-                    var e2 = document.getElementById("ex" + d + "_2").value;
-                    var e3 = document.getElementById("ex" + d + "_3").value;
+                    const e1 = document.getElementById(`ex${d}_1`).value;
+                    const e2 = document.getElementById(`ex${d}_2`).value;
+                    const e3 = document.getElementById(`ex${d}_3`).value;
+
+                    const s1 = parseInt(document.getElementById(`set${d}_1`).value, 10);
+                    const s2 = parseInt(document.getElementById(`set${d}_2`).value, 10);
+                    const s3 = parseInt(document.getElementById(`set${d}_3`).value, 10);
+
+                    const w1 = parseInt(document.getElementById(`wt${d}_1`).value, 10);
+                    const w2 = parseInt(document.getElementById(`wt${d}_2`).value, 10);
+                    const w3 = parseInt(document.getElementById(`wt${d}_3`).value, 10);
 
                     if (e1 === "" && e2 === "" && e3 === "") {
-                        alert("Please fill at least one exercise for Day " + d + ".");
+                        alert("Please fill at least one exercise for Day " + d);
+                        return;
+                    }
+
+                    if (e1 !== "" && (isNaN(s1) || s1 <= 0 || s1 > 31 || isNaN(w1) || w1 < 0 || w1 > 500)) {
+                        alert("Please enter valid sets (1-30) and weight (0-500) for Exercise 1 in Day " + d);
+                        return;
+                    }
+
+                    if (e2 !== "" && (isNaN(s2) || s2 <= 0 || s2 > 31 || isNaN(w2) || w2 < 0 || w2 > 500)) {
+                        alert("Please enter valid sets (1-30) and weight (0-500) for Exercise 2 in Day " + d);
+                        return;
+                    }
+
+                    if (e3 !== "" && (isNaN(s3) || s3 <= 0 || s3 > 31 || isNaN(w3) || w3 < 0 || w3 > 500)) {
+                        alert("Please enter valid sets (1-30) and weight (0-500) for Exercise 3 in Day " + d);
                         return;
                     }
 
 
-                    if ((isNaN(s1) || s1 <= 0) || (isNaN(s2) || s2 <= 0) || (isNaN(s3) || s3 <= 0)) {
-
-                        alert("Please enter a valid number for sets in Day " + d);
-                        return;
-                    }
-
-                    if ((isNaN(w1) || w1 < 0) || (isNaN(w2) || w2 < 0) || (isNaN(w3) || w3 < 0)) {
-
-                        alert("Please enter a valid weight in Day " + d);
-                        return;
-                    }
-
-                    tableHTML += "<tr>";
-                    tableHTML += "<td>Day " + d + "</td>";
-
-                    tableHTML += "<td>" + e1 + "<br>Sets: " + s1 + "<br>Weight: " + w1 + "</td>";
-                    tableHTML += "<td>" + e2 + "<br>Sets: " + s2 + "<br>Weight: " + w2 + "</td>";
-                    tableHTML += "<td>" + e3 + "<br>Sets: " + s3 + "<br>Weight: " + w3 + "</td>";
-
-                    tableHTML += "</tr>";
+                    tableHTML += `
+                <tr>
+                    <td>Day ${d}</td>
+                    <td>${e1}<br>Sets: ${s1}<br>Weight: ${w1}</td>
+                    <td>${e2}<br>Sets: ${s2}<br>Weight: ${w2}</td>
+                    <td>${e3}<br>Sets: ${s3}<br>Weight: ${w3}</td>
+                </tr>
+            `;
                 }
 
                 programTable.innerHTML = tableHTML;
-
                 resultsDiv.style.display = "block";
-
-                
-
-                
-
             };
 
-            
         };
 
         function addCustomNote() {
-            var userText = prompt("Enter your note:"); 
+            var userText = prompt("Enter your note:");
             var list = document.getElementById("notesList");
 
             var li = document.createElement("li");
             li.appendChild(document.createTextNode(userText));
             list.appendChild(li);
-            
-            }
+
+        };
 
         function clearNotes() {
             document.getElementById("notesList").innerHTML = "";
             c = 1;
-        }
-
-
+        };
     </script>
 
 </body>
